@@ -10,7 +10,7 @@ data "terraform_remote_state" "network" {
 }
 
 provider "aws" {
-  version = "~> 2.7"
+  version = "~> 3.0"
   region  = data.terraform_remote_state.network.outputs.aws_region
 }
 
