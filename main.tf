@@ -8,10 +8,18 @@ data "terraform_remote_state" "network" {
     }
   }
 }
+terraform {
+  required_providers {
+    aws = {
+      source = "hashicorp/aws"
+      version = "3.64.2"
+    }
+  }
+}
 
 provider "aws" {
-  version = "~> 3.0"
-  region  = data.terraform_remote_state.network.outputs.aws_region
+  # Configuration options
+  region     = data.terraform_remote_state.network.outputs.aws_region
 }
 
 data "aws_ami" "amazon_linux" {
